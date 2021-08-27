@@ -12,9 +12,12 @@ import{
 }from "../../patterns/command/light-commands"
 
 let controller = new Controller();
+
+// initally red light is off
 let REDLIGHT: boolean = false;
 let result: string;
 
+//function for setiing command in controller class
 export function LightCommand(command: Command): string {
 
     controller.setCommand(command)
@@ -26,6 +29,8 @@ export function LightCommand(command: Command): string {
 export function lightController(command : string){
 
     switch (command) {
+
+        // if the red light is on, the command will work for Red Light class, otherwise the next part will execute. 
         case "on":
             result = REDLIGHT ? LightCommand(new RedLightOnCommand(new RedLight())) :LightCommand(new LightOnCommand(new Light()))
             console.log(result)
